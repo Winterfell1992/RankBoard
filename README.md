@@ -1,5 +1,7 @@
 # RankBoard
 排行榜
+RankBoard文件为普通版的实现。RankBoardDense为密集版的实现。
+
 整体思路：
     参照redis的zset跳表实现方案。
     构建一个跳表来存储RankInfo信息。以score和timestamp进行排名
