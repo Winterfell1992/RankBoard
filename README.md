@@ -1,6 +1,6 @@
 # RankBoard
 排行榜
-RankBoard文件为普通版的实现。RankBoardDense为密集版的实现。
+我go用的少，所以用c++来做的。RankBoard文件为普通版的实现。RankBoardDense为密集版的实现。
 
 整体思路：
     参照redis的zset跳表实现方案。
@@ -10,6 +10,8 @@ RankBoard文件为普通版的实现。RankBoardDense为密集版的实现。
     查找自己的排名由于key是playerId，也需要顺序查找，时间复杂度为n。
     前n名从头指针向后查找n个即可。
     自己前后n名，维护一个左指针，为n名中的第一个，顺序查找，找到自己后，从左指针向后取n个数据。
+    
+密集版本相较于原始版本，每个节点记录多个同分的RankInfo， 删除时检查是不是本节点唯一一个数据，如果是唯一数据删除节点，否则删除RankInfo
     
 数据量大且7*24小时运行：
     1.排行榜放在redis上集群 + 持久化 
